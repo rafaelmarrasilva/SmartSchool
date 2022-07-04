@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Projeto.NET\\SmartSchool\\SmartSchool.WebApi\\SmartSchool.WebApi.csproj": {}
+    "c:\\Projeto.NET\\SmartSchool\\SmartSchool.WebApi\\SmartSchool.WebApi.csproj": {}
   },
   "projects": {
-    "C:\\Projeto.NET\\SmartSchool\\SmartSchool.WebApi\\SmartSchool.WebApi.csproj": {
+    "c:\\Projeto.NET\\SmartSchool\\SmartSchool.WebApi\\SmartSchool.WebApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Projeto.NET\\SmartSchool\\SmartSchool.WebApi\\SmartSchool.WebApi.csproj",
+        "projectUniqueName": "c:\\Projeto.NET\\SmartSchool\\SmartSchool.WebApi\\SmartSchool.WebApi.csproj",
         "projectName": "SmartSchool.WebApi",
-        "projectPath": "C:\\Projeto.NET\\SmartSchool\\SmartSchool.WebApi\\SmartSchool.WebApi.csproj",
+        "projectPath": "c:\\Projeto.NET\\SmartSchool\\SmartSchool.WebApi\\SmartSchool.WebApi.csproj",
         "packagesPath": "C:\\Users\\rafae\\.nuget\\packages\\",
-        "outputPath": "C:\\Projeto.NET\\SmartSchool\\SmartSchool.WebApi\\obj\\",
+        "outputPath": "c:\\Projeto.NET\\SmartSchool\\SmartSchool.WebApi\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\rafae\\AppData\\Roaming\\NuGet\\NuGet.Config"

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "NAuGKFyN0/nqX4z6wzEUIm9S9ZJsGHTjOS1yS+jUFMRqxOnNLTC8r3d9R4Vm42ic+qOOR83hzxACJL9Yq6q6OQ==",
+  "dgSpecHash": "i71IpmvDyM/dvneUekxEAAlXqM5luHuGS70CzxP/UNOCzYkuQWgeyhCiHFNAzLrVYOrLC+gRFuL1AV0uriJEjQ==",
   "success": true,
-  "projectFilePath": "C:\\Projeto.NET\\SmartSchool\\SmartSchool.WebApi\\SmartSchool.WebApi.csproj",
+  "projectFilePath": "c:\\Projeto.NET\\SmartSchool\\SmartSchool.WebApi\\SmartSchool.WebApi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\rafae\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
     "C:\\Users\\rafae\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
