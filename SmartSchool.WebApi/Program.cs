@@ -1,6 +1,22 @@
+using Microsoft.EntityFrameworkCore;
+using SmartSchool.WebApi.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
+
+
+IConfiguration configuration = new ConfigurationBuilder()
+    .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+    .AddJsonFile($"appsettings.Development.json", optional: true)
+    .Build();
+
 // Add services to the container.
+
+builder.Services.AddDbContext<DataContext>(
+    context => context.UseSqlite(configuration.GetConnectionString("Default"))
+);
+
+
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
