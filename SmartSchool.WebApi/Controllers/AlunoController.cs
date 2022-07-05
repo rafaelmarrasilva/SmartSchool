@@ -23,7 +23,8 @@ namespace SmartSchool.WebApi.Controllers
             return Ok(Alunos);
         }
 
-        [HttpGet("{id}")]
+        //api/aluno/byId/1
+        [HttpGet("byId/{id}")]
         public IActionResult GetById(int id)
         {
             var aluno = Alunos.Where(b => b.Id == id).FirstOrDefault();
@@ -32,5 +33,42 @@ namespace SmartSchool.WebApi.Controllers
 
             return Ok(aluno);
         }
+
+        //api/aluno/byName?nome=Rafael&sobrenome=Marra
+        [HttpGet("{byName}")]
+        public IActionResult GetById(string nome, string sobrenome)
+        {
+            var aluno = Alunos.Where(b => b.Nome == nome && b.Sobrenome == sobrenome).FirstOrDefault();
+            if(aluno == null)
+                return BadRequest("Aluno não encontrado");
+
+            return Ok(aluno);
+        }
+
+        [HttpPost]
+        public IActionResult Post(Aluno aluno)
+        {
+            return Ok(aluno);
+        }
+
+        [HttpPut("{id}")]
+        public IActionResult Put(int id, Aluno aluno)
+        {
+            return Ok(aluno);
+        }
+
+        [HttpPatch]
+        public IActionResult Patch(int id, Aluno aluno)
+        {
+            return Ok(aluno);
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            return Ok();
+        }
+        
+
     }
 }
