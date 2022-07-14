@@ -2,9 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SmartSchool.WebApi.Data;
+using SmartSchool.WebApi.Dtos;
 using SmartSchool.WebApi.Models;
 
 namespace SmartSchool.WebApi.Controllers
@@ -14,26 +16,36 @@ namespace SmartSchool.WebApi.Controllers
     public class AlunoController : ControllerBase
     {
         private readonly IRepository _repo;
-        public AlunoController(IRepository repo)
+        private readonly IMapper _mapper;
+        public AlunoController(IRepository repo, IMapper mapper)
         {
             _repo = repo;
+            _mapper = mapper;
         }
 
         [HttpGet]
         public IActionResult Get()
         {
-            var result = _repo.GetAllAlunos(true);
+            var alunos = _repo.GetAllAlunos(true);
+            var result = _mapper.Map<IEnumerable<AlunoDto>>(alunos);
             return Ok(result);
+        }
+        
+         [HttpGet("getRegister")]
+        public IActionResult GetRegister()
+        {
+            return Ok(new AlunoRegistrarDto());
         }
 
         //api/aluno/byId/1
         [HttpGet("byId/{id}")]
         public IActionResult GetById(int id)
         {
-            var result = _repo.GetAlunoById(id,false);
-            if(result == null)
+            var aluno = _repo.GetAlunoById(id,false);
+            if(aluno == null)
                 return BadRequest("Aluno não encontrado");
 
+            var result = _mapper.Map<AlunoDto>(aluno);
             return Ok(result);
         }
 
@@ -51,38 +63,46 @@ namespace SmartSchool.WebApi.Controllers
         */
 
         [HttpPost]
-        public IActionResult Post(Aluno aluno)
+        public IActionResult Post(AlunoRegistrarDto model)
         {
+            var aluno = _mapper.Map<Aluno>(model);
             _repo.Add(aluno);
             if(!_repo.SaveChanges())
                 return BadRequest("Não foi possível gravar o registro.");
-            return Ok(aluno);
+            
+            return Created($"/api/aluno/{model.Id}", _mapper.Map<AlunoDto>(aluno));
         }
 
         [HttpPut("{id}")]
-        public IActionResult Put(int id, Aluno aluno)
+        public IActionResult Put(int id, AlunoRegistrarDto model)
         {
-            var result = _repo.GetAlunoById(id,false);
-            if(result == null)
+            var aluno = _repo.GetAlunoById(id,false);
+            if(aluno == null)
                 return BadRequest("Aluno não encontrado!");
+
+            _mapper.Map(model,aluno);
 
             _repo.Update(aluno);
             if(!_repo.SaveChanges())
                 return BadRequest("Não foi possível atualizar o registro.");
-            return Ok(aluno);
+            
+            return Created($"/api/aluno/{model.Id}", _mapper.Map<AlunoDto>(aluno));
         }
 
         [HttpPatch("{id}")]
-        public IActionResult Patch(int id, Aluno aluno)
+        public IActionResult Patch(int id, AlunoRegistrarDto model)
         {
-            var result = _repo.GetAlunoById(id,false);
-            if(result == null)
+            var aluno = _repo.GetAlunoById(id,false);
+            if(aluno == null)
                 return BadRequest("Aluno não encontrado!");
+
+            _mapper.Map(model,aluno);
 
             _repo.Update(aluno);
             if(!_repo.SaveChanges())
                 return BadRequest("Não foi possível atualizar o registro.");
-            return Ok(aluno);
+            
+            return Created($"/api/aluno/{model.Id}", _mapper.Map<AlunoDto>(aluno));
         }
 
         [HttpDelete("{id}")]

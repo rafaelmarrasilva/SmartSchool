@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using SmartSchool.WebApi.Data;
 using Newtonsoft.Json;
+using AutoMapper;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,10 +16,13 @@ builder.Services.AddDbContext<DataContext>(
     context => context.UseSqlite(configuration.GetConnectionString("Default"))
 );
 
-builder.Services.AddScoped<IRepository, Repository>();
-
 builder.Services.AddControllers()
                 .AddNewtonsoftJson(opt => opt.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+builder.Services.AddScoped<IRepository, Repository>();
+
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
