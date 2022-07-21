@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SmartSchool.WebApi</name>
+    </assembly>
+    <members>
+        <member name="T:SmartSchool.WebApi.Controllers.AlunoController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:SmartSchool.WebApi.Controllers.AlunoController.#ctor(SmartSchool.WebApi.Data.IRepository,AutoMapper.IMapper)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:SmartSchool.WebApi.Controllers.AlunoController.Get">
+            <summary>
+            Método responsável para retornar todos os meus alunos
+            </summary>
+        </member>
+        <member name="M:SmartSchool.WebApi.Controllers.AlunoController.GetById(System.Int32)">
+            <summary>
+            Método responsável por retornar apenas um único aluno, por meio do Id
+            </summary>
+        </member>
+        <member name="T:SmartSchool.WebApi.Dtos.AlunoDto">
+            <summary>
+            Este é o DTO de Aluno para o Get.
+            </summary>
+        </member>
+        <member name="P:SmartSchool.WebApi.Dtos.AlunoDto.Id">
+            <summary>
+            Identificador e chave do Banco
+            </summary>
+        </member>
+        <member name="P:SmartSchool.WebApi.Dtos.AlunoDto.Matricula">
+            <summary>
+            Chave do aluno , para outros negocios na Instituição
+            </summary>
+        </member>
+    </members>
+</doc>
