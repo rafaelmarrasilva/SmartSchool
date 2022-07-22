@@ -20,10 +20,10 @@ namespace SmartSchool.WebApi.Dtos
         ///Chave do aluno , para outros negocios na Instituição
         ///</summary>
         public int Matricula { get; set; }
-        public string Nome { get; set; }
-        public string Telefone { get; set; }
-        public int Idade { get; set; }
-        public DateTime DataIni { get; set; }
-        public bool Ativo { get; set; }
+        public string? Nome { get; set; }
+        public string? Telefone { get; set; }
+        public int? Idade { get; set; }
+        public DateTime? DataIni { get; set; }
+        public bool? Ativo { get; set; }
     }
 }

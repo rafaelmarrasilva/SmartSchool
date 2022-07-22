@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SmartSchool.WebApi.Data;
 using SmartSchool.WebApi.Dtos;
+using SmartSchool.WebApi.Helpers;
 using SmartSchool.WebApi.Models;
 
 namespace SmartSchool.WebApi.Controllers
@@ -35,10 +36,12 @@ namespace SmartSchool.WebApi.Controllers
         ///Método responsável para retornar todos os meus alunos
         ///</summary>
         [HttpGet]
-        public IActionResult Get()
+        public async Task<IActionResult> Get([FromQuery]PageParams pageParams)
         {
-            var alunos = _repo.GetAllAlunos(true);
+            var alunos = await _repo.GetAllAlunosAsync(pageParams, true);
+            
             var result = _mapper.Map<IEnumerable<AlunoDto>>(alunos);
+            Response.AddPagination(alunos.CurrentPage, alunos.PageSize, alunos.TotalCount, alunos.TotalPages);
             return Ok(result);
         }
         
@@ -53,9 +56,9 @@ namespace SmartSchool.WebApi.Controllers
         ///</summary>
         //api/aluno/byId/1
         [HttpGet("byId/{id}")]
-        public IActionResult GetById(int id)
+        public async Task<IActionResult> GetById(int id)
         {
-            var aluno = _repo.GetAlunoById(id,false);
+            var aluno = await _repo.GetAlunoByIdAsync(id,false);
             if(aluno == null)
                 return BadRequest("Aluno não encontrado");
 
@@ -88,9 +91,9 @@ namespace SmartSchool.WebApi.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult Put(int id, AlunoRegistrarDto model)
+        public async Task<IActionResult> Put(int id, AlunoRegistrarDto model)
         {
-            var aluno = _repo.GetAlunoById(id,false);
+            var aluno = await _repo.GetAlunoByIdAsync(id,false);
             if(aluno == null)
                 return BadRequest("Aluno não encontrado!");
 
@@ -104,9 +107,9 @@ namespace SmartSchool.WebApi.Controllers
         }
 
         [HttpPatch("{id}")]
-        public IActionResult Patch(int id, AlunoRegistrarDto model)
+        public async Task<IActionResult> Patch(int id, AlunoRegistrarDto model)
         {
-            var aluno = _repo.GetAlunoById(id,false);
+            var aluno = await _repo.GetAlunoByIdAsync(id,false);
             if(aluno == null)
                 return BadRequest("Aluno não encontrado!");
 
@@ -120,9 +123,9 @@ namespace SmartSchool.WebApi.Controllers
         }
 
         [HttpDelete("{id}")]
-        public IActionResult Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
-            var result = _repo.GetAlunoById(id,false);
+            var result = await _repo.GetAlunoByIdAsync(id,false);
             if(result == null)
                 return BadRequest("Aluno não encontrado!");
             
