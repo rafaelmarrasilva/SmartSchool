@@ -15,9 +15,8 @@ IConfiguration configuration = new ConfigurationBuilder()
 
 // Add services to the container.
 
-builder.Services.AddDbContext<DataContext>(
-    context => context.UseSqlite(configuration.GetConnectionString("Default"))
-);
+string conn = configuration.GetConnectionString("MySqlConnection");
+builder.Services.AddDbContext<DataContext>(context => context.UseMySql(conn, ServerVersion.AutoDetect(conn)));
 
 builder.Services.AddControllers()
                 .AddNewtonsoftJson(opt => opt.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);

@@ -61,3 +61,5 @@ C:\Projeto.NET\SmartSchool\SmartSchool.WebApi\bin\Debug\net6.0\AutoMapper.Extens
 C:\Projeto.NET\SmartSchool\SmartSchool.WebApi\bin\Debug\net6.0\SmartSchool.WebApi.xml
 C:\Projeto.NET\SmartSchool\SmartSchool.WebApi\bin\Debug\net6.0\Microsoft.AspNetCore.Mvc.Versioning.dll
 C:\Projeto.NET\SmartSchool\SmartSchool.WebApi\bin\Debug\net6.0\Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer.dll
+C:\Projeto.NET\SmartSchool\SmartSchool.WebApi\bin\Debug\net6.0\MySqlConnector.dll
+C:\Projeto.NET\SmartSchool\SmartSchool.WebApi\bin\Debug\net6.0\Pomelo.EntityFrameworkCore.MySql.dll
